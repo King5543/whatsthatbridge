@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:bridge_id>/', views.detail, name='detail'),
     path('add_county/', views.add_county, name='add_county'),
+    path('closest/', views.closest, name='closest')
 ]

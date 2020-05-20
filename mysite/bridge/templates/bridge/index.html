@@ -6,16 +6,39 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+<link rel="shortcut icon" href="{% static 'bridge/favicon.ico' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'bridge/style.css' %}">
+
+<title>What's That Bridge?</title>
 <div class="container-fluid">
 <h1>
     Hello, welcome to <b>What's That Bridge?</b>
 </h1>
+    <div class="container-fluid">
+        <a href="{% url 'bridge:detail' random.id %}">
+            <input type="button" value="Random bridge!"/>
+        </a>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <form action="{% url 'bridge:closest' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Closest bridge!" id="position"/>
+        </form>
+    </div>
+    <br>
+
+    <!--
     <form action="{% url 'bridge:add_county' %}" method="post">
     {% csrf_token %}
-        <label for="county">Enter your county here:</label>
-    <input type="text" value="Enter your county here:" name="county_text" id="county">
+        <label for="county"><b>Enter your county here:</b></label>
+    <input type="text" value="" name="county_text" id="county">
     <input type="submit" value="Ready!">
 </form>
+-->
 </div>
+
+<script>
+document.getElementById("position").innerHTML = getCurrentPosition();
+</script>
 </html>
