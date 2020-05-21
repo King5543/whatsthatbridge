@@ -1,6 +1,8 @@
 import math
+from django.http import HttpResponse, HttpResponseRedirect, request
 from django.shortcuts import get_object_or_404, render
 from .models import Bridge
+from django.urls import reverse
 
 
 def top_five_pop_bridges(lat, long):
@@ -55,4 +57,4 @@ def top_five_pop_bridges(lat, long):
     for i in top_five_list:
         htmlfile.write('<td>' + top_five_list[i][0] + '</td>')
     htmlfile.write('</tr>' + '</table>')
-    return
+    return HttpResponseRedirect(reverse('bridge:index'))
