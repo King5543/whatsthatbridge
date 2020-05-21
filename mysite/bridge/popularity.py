@@ -54,7 +54,9 @@ def top_five_pop_bridges(lat, long):
     htmlfile.write('<table>' + '<tr>' + '<th>' + 'First' + '</th>' + '<th>' + 'Second' + '</th>' + '<th>' + 'Third' + '</th>'
                    + '<th>' + 'Fourth' + '</th>'
                    + '<th>' + 'Fifth' + '</th>' + '</tr>' + '<tr>')
-    for i in top_five_list:
-        htmlfile.write('<td>' + top_five_list[i][0] + '</td>')
+    line = 0
+    while line < len(top_five_list):
+        htmlfile.write('<td>' + top_five_list[line][0] + '</td>')
+        line += 1
     htmlfile.write('</tr>' + '</table>')
     return HttpResponseRedirect(reverse('bridge:index'))
